@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+ name: sala
+---
+kind: Deployment
+metadata:
+ name: nginx-deployment
+ namespace: sala
+
+spec:
+ selector:
+  matchLabels:
+   name: nginx-deployment
+ replicas: 3
+ template:
+  metadata:
+   labels:
+    name: nginx-deployment
+
+  spec:
+   containers:
+    - name: nginx-deployment
+      image: nginx
+      ports:
+       - containerPort: 80

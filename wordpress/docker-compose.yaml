@@ -1,0 +1,15 @@
+version: '3'
+services:
+ wordpress:
+  image: httpd
+  hostname: wordpress-site
+  container_name: wordpress-site
+  links:
+   - banco_mysql:mysql
+  ports:
+   - 8088:80
+
+ banco_mysql:
+  image: debian
+  environment:
+   MYSQL_ROOT_PASSSWORD: 4linux

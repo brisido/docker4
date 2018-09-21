@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+ name: frontend-monitoring
+
+spec:
+ template:
+  metadata:
+   labels:
+    app: frontend-monitoring
+
+  spec:
+   containers:
+    - name: monitoring
+      image: nginx
+      ports:
+       - containerPort: 80

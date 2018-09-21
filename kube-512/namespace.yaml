@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+ name: dexter1
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: testando-ns
+ namespace: dexter1
+
+spec:
+ selector:
+  matchLabels:
+   name: aplicacao-ns
+ replicas: 3
+ template:
+  metadata:
+   labels:
+    name: aplicacao-ns
+  spec:
+   containers:
+    - name: aplicacao-ns
+      image: httpd
+      ports:
+       - containerPort: 80
